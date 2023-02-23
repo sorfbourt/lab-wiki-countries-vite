@@ -39,7 +39,18 @@ useEffect(()=>{
                     console.log(borderCountry)
                    return <li key={index}>
                     <Link to={`/${borderCountry}`}>
-                    {borderCountry}</Link>
+                       
+                   {countries.map(country =>{
+                    console.log(borderCountry, country.alpha3Code)
+                    if(borderCountry === country.alpha3Code){
+                        return country.name.common
+                    }
+                   })
+
+                   }
+                    
+                    
+                    </Link>
                    </li>
                 })
                 
