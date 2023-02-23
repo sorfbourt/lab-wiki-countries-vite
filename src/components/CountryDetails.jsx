@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
+import axios from 'axios'
+
 
 function CountryDetails({countries}) {
 let {id} = useParams();
-console.log(id)
+const [specificCountry, setSpecificCountry] = useState([])
+
+
+  
+useEffect(()=>{
+    const fetchData = async() =>{
+      const responseData = await axios.get(`https://ih-countries-api.herokuapp.com/countries/${id}`)
+      console.log("responseData", responseData.data)
+      setSpecificCountry(responseData.data)
+      console.log("specificCountry", specificCountry)
+    }
+    fetchData()
+    
+  }, [CountryDetails])
+
+
   return (
     <div>
 
